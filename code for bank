@@ -1,0 +1,96 @@
+package Contact_pack;
+//import Methods.new_con;
+//import Methods.List_of_all;
+import java.util.*;
+
+public class Contact {
+	static public String name[]=new String[108];
+	public static double ph_no[]=new double[108];
+	static public int ch=0;
+	static public  int size;
+	public static Scanner input=new Scanner(System.in);
+	public static void main(String args[]) {
+		while(ch!=6) {
+		System.out.println("\n\nContact Management System");	
+		System.out.println("1. New Contact : \n2. Delete Contact : \n3. Edit Contact : \n4. List of all Contact : \n5. Search for Contact : \n6. Exit : ");
+		System.out.print("\nEnter your Chooice : ");		
+		try{
+			ch=input.nextInt();
+		if(ch==6)
+			System.exit(8);
+		Contact obj=new Contact();
+		obj.methods_calling(ch);
+		}
+		catch(Exception e) {
+			System.out.println("\n\ne r r o r" );
+		}
+	}}
+void methods_calling(int c) {
+	Contact obj=new Contact();
+	switch(c) {
+	case 1: //new_con obj1=new new_con();
+			obj.new_contact();break;
+	case 2: obj.delete_contact();break;
+	case 3: obj.edit_contact();break;
+	case 4://List_of_all obj4=new List_of_all(); 
+		    obj.list_of_all_contact(size);break;
+	case 5: obj.search_for_contact();break;
+	
+	default:
+		System.out.println("error: you enter invalid choice");
+		break;
+		}
+	
+	}
+void new_contact() {
+	System.out.print("\n You are in New Contact Menu.\nEnter Name : ");
+	name[size]=input.next();
+	System.out.print("Enter Ph.no: ");
+	ph_no[size]=input.nextInt();
+	size=size+1;
+	
+}
+void delete_contact() {
+	System.out.print("\n You are in Delete Contcat Menu. \nEnter ID of Contact to delete it : ");
+	int id=input.nextInt();
+	for(int i=0;i<=size;i++)
+	{
+		if(i>=id)
+		{
+			name[i]=name[i+1];
+			ph_no[i]=ph_no[i+1];
+		}
+	}
+	size=size-1;
+}
+void edit_contact() {
+	System.out.print("\n You are in Edit Contact Menu. \nEnter ID of Contact for edit : ");
+	int id=input.nextInt();
+	System.out.print("1. Edit Name : \n2. Edit Ph. No. :\nEnter Chooice : ");
+	int edit_ch=input.nextInt();
+	if(edit_ch==1) {
+	System.out.print("Enter new name : ");
+	name[id]=input.next();}
+	else if(edit_ch==2) {
+	System.out.print("Enter new ph.no: ");
+	ph_no[id]=input.nextInt();}
+	else {System.out.print("You enter Wrong Choice");
+	}
+}
+	
+void list_of_all_contact(int s) {
+System.out.println("\n List of All Contact In the list : ");
+	for(int i=0;i<size;i++)
+	{
+	System.out.println("Name : " + name[i]+"  ph.no : "+ph_no[i]+" size : "+size);	
+	}
+}
+void search_for_contact() {
+	System.out.print(" You are in Search Menu.\nEnter ID of Contact for search : ");
+	int id=input.nextInt();
+	for(int i=0;i<=size;i++)
+	{if(i==id)
+	System.out.println("Name : " + name[id]+"  ph.no : "+ph_no[id]+" id : "+id);	
+	}
+	
+}}
